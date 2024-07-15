@@ -899,6 +899,34 @@ ifeq ($(findstring _1_0, $(strip $(WIKO_SOUND_VERSION))),_1_0)
 else ifeq ($(findstring _1_1, $(strip $(WIKO_SOUND_VERSION))),_1_1)
 ```
 
+***
+
+## subst-字符串替换
+
+名称：字符串替换函数——subst。
+
+功能：把字串中的字符串替换成。
+
+返回：函数返回被替换过后的字符串。
+
+```makefile
+$(subst <from>,<to>,<text> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning ----$(subst o,e,football))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: ----feetball
+```
+
+***
 
 ```makefile
 
