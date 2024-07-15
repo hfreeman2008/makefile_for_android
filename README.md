@@ -761,7 +761,7 @@ ${<function> <arguments>}
 
 ***
 
-# filter 和 filter-out 
+## filter 和 filter-out 
 
 过滤函数和反过滤函数
 
@@ -806,7 +806,7 @@ mon tue wed thu fri
 
 ***
 
-# strip 去空格函数
+## strip 去空格函数
 
 功能：去掉字串中开头和结尾的空字符。
 
@@ -863,7 +863,7 @@ $(warning ----:$(strip $(my_value_01) $(my_value_02) $(my_value_03)))
 test.mk:6: ----:hello_1 hello_2 hello_3
 
 ***
-# findstring–查找字符串函数
+## findstring–查找字符串函数
 
 功能：从string_Src中查找string_a
 
