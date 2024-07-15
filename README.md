@@ -1237,6 +1237,35 @@ test.mk:2: -----addprefix:src/hellp.java src/test.java
 
 ***
 
+## join-连接函数
+功能：把中的单词对应地加到的单词后面。
+
+返回：返回连接过后的字符串。
+
+```makefile
+$(join <list1>,<list2> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----join:$(join aaa, b))
+$(warning -----join:$(join a, bbb))
+
+$(warning -----join:$(join aaabbb,1112222333444))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: -----join:aaab
+test.mk:3: -----join:abbb
+test.mk:5: -----join:aaabbb1112222333444
+```
+
+***
+
 ```makefile
 
 ```
