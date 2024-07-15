@@ -153,6 +153,105 @@ test.mk:4: -----var:aaa bbb ccc ddd
 
 ***
 
+# 判断 ifeq ifneq
+
+ifeq 比较参数“arg1”和“arg2”的值是否相同，如果相同则为真。
+```makefile
+ifeq (<arg1>, <arg2> )
+ifeq '<arg1>' '<arg2>'
+ifeq "<arg1>" "<arg2>"
+ifeq "<arg1>" '<arg2>'
+ifeq '<arg1>' "<arg2>"
+```
+ifneq和ifeq类似：
+
+```makefile
+ifneq (<arg1>, <arg2> )
+ifneq '<arg1>' '<arg2>'
+ifneq "<arg1>" "<arg2>"
+ifneq "<arg1>" '<arg2>'
+ifneq '<arg1>' "<arg2>"
+```
+
+使用格式为：
+
+```makefile
+ifeq (arg1,arg2)
+$(warning ----)
+else
+$(warning ----)
+endif
+```
+
+```makefile
+ifeq (arg1,arg2)
+$(warning ----)
+else ifeq (arg3,arg4)
+$(warning ----)
+endif
+```
+
+示例1：
+
+如果定义LANIX_DATACON_ALERT为true，就内置LanixDataconAlert
+
+```makefile
+LANIX_DATACON_ALERT := true
+ifeq ($(strip $(LANIX_DATACON_ALERT)),true)
+  PRODUCT_PACKAGES += LanixDataconAlert 
+endif
+```
+
+示例2：
+
+如果定义PRODUCT_PREBUILT_WEBVIEWCHROMIUM为yes，就包含vendor/google/gms/apps/WebViewGoogle/overlay。
+```makefile
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+PRODUCT_PACKAGES += WebViewGoogle
+# The following framework overlay must be included if prebuilt WebViewGoogle.apk is used
+PRODUCT_PACKAGE_OVERLAYS += vendor/google/gms/apps/WebViewGoogle/overlay
+endif
+```
+
+示例3：
+
+如果为eng版本就不内置SetupWizard，如果不为eng就内置SetupWizard。
+```makefile
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),eng)
+#$(warning ----eng---no--need---setupwizard----)
+else
+PRODUCT_PACKAGES += \
+    SetupWizard
+endif
+```
+
+示例4：
+
+如果TARGET_USES_QTIC为空，就将TARGET_USES_QTIC置为true
+```makefile
+ ifeq ($(strip $(TARGET_USES_QTIC)),)
+ TARGET_USES_QTIC := true
+ endif
+```
+
+
+示例5：
+
+如果PROJECT_NAME不为空，就复制对应vendor/(TARGETPRODUCT)/(TARGETPRODUCT)/(PROJECT_NAME)/copy_custom_files文件，如果PROJECT_NAME为空，就对应复制vendor/$(TARGET_PRODUCT)/trunk/copy_custom_files文件
+
+```makefile
+ifneq ($(strip $(PROJECT_NAME)),)
+COPY_FILES_PATH := vendor/$(TARGET_PRODUCT)/$(PROJECT_NAME)/copy_custom_files
+$(shell cp -rf  $(COPY_FILES_PATH)/*   .)
+else
+COPY_FILES_PATH := vendor/$(TARGET_PRODUCT)/trunk/copy_custom_files
+$(shell cp -rf  $(COPY_FILES_PATH)/*   .)
+endif
+```
+
+***
+
 ```makefile
 
 ```
