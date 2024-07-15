@@ -362,6 +362,17 @@ PRODUCT_COPY_FILES += vendor/packages/apks/default_workspace.xml:system/etc/defa
 
 ***
 
+# 添加应用 PRODUCT_PACKAGES
+
+示例1：
+```makefile
+PRODUCT_PACKAGES += \
+    Phonesky \
+    SetupWizard
+```
+***
+
+
 ```makefile
 
 ```
