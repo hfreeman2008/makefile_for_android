@@ -372,6 +372,42 @@ PRODUCT_PACKAGES += \
 ```
 ***
 
+# TARGET_BUILD_VARIANT编译类型（user ，userdebug，eng）
+
+示例1：
+
+```makefile
+user_variant := $(filter user userdebug,$(TARGET_BUILD_VARIANT))
+enable_target_debugging := true
+tags_to_install :=
+ifneq (,$(user_variant))
+  # Target is secure in user builds.
+  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=1
+  ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
+
+  ifeq ($(user_variant),user)
+    ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+  endif
+
+  ifeq ($(user_variant),userdebug)
+    # Pick up some extra useful tools
+    tags_to_install += debug
+  else
+    # Disable debugging in plain user builds.
+    enable_target_debugging :=
+  endif
+```
+
+示例2：
+```makefile
+#userdebug版本，才执行
+ifneq ($(filter userdebug, $(TARGET_BUILD_VARIANT)),)
+DEFINES += MTK_BUILD_DEFAULT_UNLOCK
+endif
+```
+
+
+***
 
 ```makefile
 
