@@ -1163,6 +1163,29 @@ test.mk:2: -----suffix:.java .sh
 
 
 ***
+## basename-取前缀函数
+功能：从文件名序列中取出各个文件名的前缀部分。
+
+返回：返回文件名序列的前缀序列，如果文件没有前缀，则返回空字串。
+```makefile
+$(basename <names...> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----basename:$(basename src/hellp.java test.sh))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: -----basename:src/hellp test
+```
+
+
+***
 
 ```makefile
 
