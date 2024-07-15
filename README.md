@@ -592,6 +592,17 @@ test.mk:6: -----var_01:test_01
 
 ***
 
+# PLATFORM平台
+芯片平台，是MTK,还是QCOM
+
+```makefile
+ifneq ((strip(strip(PLATFORM)), QCOM)
+PRODUCT_PACKAGES += XXX
+endif
+```
+
+***
+
 ```makefile
 
 ```
