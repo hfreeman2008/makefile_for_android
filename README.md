@@ -65,6 +65,37 @@ $(warning ----my_value:$(my_value))
 
 ***
 
+# 冒号等于操作符–”:=“
+
+前面的变量不能使用后面的变量，只能使用前面已定义好了的变量。
+
+```makefile
+#-----------------start----------------
+x := foo
+y := $(x) bar
+x := later
+
+$(warning -----y:$(y))
+$(warning -----x:$(x))
+
+y_02 := $(x_02) bar
+x_02 := foo
+$(warning -----y_02:$(y_02))
+$(warning -----x_02:$(x_02))
+#-----------------end----------------
+```
+
+输出：
+
+```makefile
+test.mk:6: -----y:foo bar
+test.mk:7: -----x:later
+test.mk:11: -----y_02: bar
+test.mk:12: -----x_02:foo
+```
+
+***
+
 ```makefile
 
 ```
