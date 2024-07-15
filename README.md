@@ -761,9 +761,48 @@ ${<function> <arguments>}
 
 ***
 
-```makefile
+# filter 和 filter-out 
 
+过滤函数和反过滤函数
+
+- filter
+
+```makefile
+$(filter word1 word2,$(VARIANTS))
 ```
+
+判断变量VARIANTS中是否包含word1和 word2，如果包含就把VARIANTS中包含的word1和word2之外的过滤掉
+
+示例：
+
+```makefile
+VARIANTS := mon tue wed thu fri sat sun
+DAY := $(filter sat sun,$(VARIANTS))
+$(info $(DAY))
+```
+
+输出：
+
+sat sun
+
+- filter-out
+
+```makefile
+$(filter-out word1 word2,$(VARIANTS))
+```
+判断变量VARIANTS中是否包含word1和 word2，如果包含就把VARIANTS中包含的word1和word2过滤掉，其余的全部保留
+
+示例：
+
+```makefile
+VARIANTS := mon tue wed thu fri sat sun
+DAY := $(filter-out sat sun,$(VARIANTS))
+$(info $(DAY))
+```
+
+输出为：
+
+mon tue wed thu fri
 
 ***
 
