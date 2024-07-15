@@ -1035,6 +1035,35 @@ test.mk:2: ----bar2 bar3
 
 ***
 
+## words–单词个数统计函数
+
+功能：统计中字符串中的单词个数。
+
+返回：返回中的单词数。
+
+备注：如果我们要取中最后的一个单词，我们可以这样：(word(word(words), )。
+```makefile
+$(words <text> )
+```
+
+示例1:
+
+```makefile
+#-----------------start----------------
+string = foo bar baz
+$(warning ----$(words $(string)))
+$(warning ----$(word $(words $(string)),$(string)))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+test.mk:3: ----3
+test.mk:4: ----baz
+```
+
+
+***
 
 ```makefile
 
