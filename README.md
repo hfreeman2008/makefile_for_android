@@ -341,6 +341,27 @@ test.mk:4: -----file:a.java b.java c.java d.java
 
 ***
 
+# 文件复制 PRODUCT_COPY_FILES
+
+复制文件到对应位置
+
+示例1：
+
+```makefile
+PRODUCT_COPY_FILES += device/qcom/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+device/qcom/media/media_codecs_8939.xml:system/etc/media_codecs_8939.xml \
+device/qcom/media/media_codecs_8929.xml:system/etc/media_codecs_8929.xml
+```
+
+示例2：
+对launcher应用app布局文件的定义：
+
+```makefile
+PRODUCT_COPY_FILES += vendor/packages/apks/default_workspace.xml:system/etc/default_workspace.xml
+```
+
+***
+
 ```makefile
 
 ```
