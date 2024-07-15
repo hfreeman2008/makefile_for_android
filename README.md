@@ -252,6 +252,68 @@ endif
 
 ***
 
+# ifdef ifndef
+
+如果变量的值非空，那到表达式为真。否则，表达式为假。当然，同样可以是一个函数的返回值。
+
+
+```makefile
+ifdef <variable-name>
+```
+注意，ifdef只是测试一个变量是否有值，其并不会把变量扩展到当前位置。还是来看例子：
+
+
+示例1：
+```makefile
+#-----------------start----------------
+bar =
+foo = $(bar)
+ifdef foo
+frobozz = yes
+else
+frobozz = no
+endif
+$(warning ----frobozz=$(frobozz))
+
+foo =
+ifdef foo
+frobozz = yes
+else
+frobozz = no
+endif
+$(warning ----frobozz=$(frobozz))
+#-----------------end----------------
+```
+
+输出：
+
+```makefile
+test.mk:9: ----frobozz=yes
+test.mk:17: ----frobozz=no
+```
+
+示例2：
+
+在*.c文件中定义：
+
+```makefile
+#ifndef WIFI_SDIO_IF_DRIVER_MODULE_PATH
+#define WIFI_SDIO_IF_DRIVER_MODULE_PATH "/system/lib/modules/librasdioif.ko"
+#endif
+```
+
+示例3：
+
+在mk文件中：
+
+```makefile
+ifdef WIFI_DRIVER_MODULE_PATH
+LOCAL_CFLAGS += -DWIFI_DRIVER_MODULE_PATH=\"$(WIFI_DRIVER_MODULE_PATH)\"
+endif
+```
+
+***
+
 ```makefile
 
 ```
