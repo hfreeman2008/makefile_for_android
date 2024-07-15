@@ -955,6 +955,35 @@ test.mk:2: ----x.c.o bar.o
 
 ***
 
+## sort–排序函数
+功能：给字符串中的单词排序（升序）。
+
+返回：返回排序后的字符串。
+
+备注：sort函数会去掉中相同的单词。
+
+```makefile
+$(sort <list> )
+```
+
+示例1:
+
+```makefile
+#-----------------start----------------
+$(warning ----$(sort foo bar lose))
+$(warning ----$(sort foo bar bar lose))
+#-----------------end----------------
+```
+
+输出：
+
+```makefile
+test.mk:2: ----bar foo lose
+test.mk:3: ----bar foo lose
+```
+
+***
+
 ```makefile
 
 ```
