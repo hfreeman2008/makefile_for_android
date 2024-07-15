@@ -1117,6 +1117,27 @@ test.mk:3: -----dir:src/ ./
 
 
 ***
+## notdir-取文件函数
+
+功能：从文件名序列中取出非目录部分。非目录部分是指最后一个反斜杠（“/”）之后的部分。
+
+返回：返回文件名序列的非目录部分。
+```makefile
+$(notdir <names...> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----notdir:$(notdir src/hellp.java test.sh))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+test.mk:2: -----notdir:hellp.java test.sh
+```
+***
 
 ```makefile
 
