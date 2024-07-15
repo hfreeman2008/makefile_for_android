@@ -603,6 +603,28 @@ endif
 
 ***
 
+# LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES 配置jar包到项目中
+
+可以参考---packages\apps\CMFileManager\Android.mk
+
+内置一个ireadygo_keyadapter.jar到应用中。
+(1)新建libs文件，将ireadygo_keyadapter.jar添加到libs文件中
+(2)在Android.mk文件中添加：
+
+```makefile
+
+LOCAL_STATIC_JAVA_LIBRARIES += ireadygo_keyadapter
+.....................................................
+include $(CLEAR_VARS)
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+    ireadygo_keyadapter:libs/ireadygo_keyadapter.jar
+
+include $(BUILD_MULTI_PREBUILT)
+include $(call all-makefiles-under,$(LOCAL_PATH))
+```
+
+***
+
 ```makefile
 
 ```
