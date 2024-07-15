@@ -1064,6 +1064,30 @@ test.mk:4: ----baz
 
 
 ***
+## firstword–首单词函数
+
+功能：取字符串中的第一个单词。
+
+返回：返回字符串的第一个单词。
+```makefile
+$(firstword <text> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+string = foo bar baz
+$(warning ----$(firstword  $(string)))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:3: ----foo
+```
+
+***
 
 ```makefile
 
