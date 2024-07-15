@@ -863,7 +863,48 @@ $(warning ----:$(strip $(my_value_01) $(my_value_02) $(my_value_03)))
 test.mk:6: ----:hello_1 hello_2 hello_3
 
 ***
+# findstring–查找字符串函数
 
+功能：从string_Src中查找string_a
+
+返回：如果查找到string_a，返回string_a，如果没有查找到，返回
+
+```makefile
+findstring string_a, string_Src
+```
+
+示例1:
+
+```makefile
+#-----------------start----------------
+$(warning ----$(findstring a,a b c))
+$(warning ----$(findstring a,b c))
+#-----------------end----------------
+```
+输出：
+```makefile
+test.mk:2: ----a
+test.mk:3: ----
+```
+
+示例2:
+
+```makefile
+WIKO_SOUND_VERSION:=wiko_sound_1_3
+
+ifneq ($(strip $(WIKO_SOUND_VERSION)),)
+$(warning $(WIKO_SOUND_VERSION))
+ifeq ($(findstring _1_0, $(strip $(WIKO_SOUND_VERSION))),_1_0)
+......
+else ifeq ($(findstring _1_1, $(strip $(WIKO_SOUND_VERSION))),_1_1)
+```
+
+
+```makefile
+
+```
+
+***
 
 ```makefile
 
