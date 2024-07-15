@@ -132,6 +132,27 @@ test.mk:6: -----x:hello
 
 ***
 
+# 追加变量值–+=
+
+使用“+=”操作符给变量追加值。
+
+示例1：
+```makefile
+#-----------------start----------------
+var=aaa bbb ccc
+var+=ddd
+$(warning -----var:$(var))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+test.mk:4: -----var:aaa bbb ccc ddd
+```
+
+
+***
+
 ```makefile
 
 ```
