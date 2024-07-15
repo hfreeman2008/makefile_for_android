@@ -1089,6 +1089,35 @@ test.mk:3: ----foo
 
 ***
 
+## dir-取目录函数
+功能：从文件名序列中取出目录部分。目录部分是指最后一个反斜杠（“/”）之前的部分。如果没有反斜杠，那么返回“./”。
+
+返回：返回文件名序列的目录部分。
+
+示例： $(dir src/foo.c hacks)返回值是“src/ ./”。
+
+```makefile
+$(dir <names...> )
+```
+
+
+示例1:
+
+```makefile
+#-----------------start----------------
+$(warning -----dir:$(dir src/hellp.java test.sh))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+$(addsuffix <suffix>,<names...> )
+test.mk:3: -----dir:src/ ./
+```
+
+
+***
+
 ```makefile
 
 ```
