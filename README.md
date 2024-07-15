@@ -625,6 +625,22 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 ***
 
+# LOCAL_PREBUILT_JNI_LIBS 复制内置apk中的so文件：
+
+```makefile
+LOCAL_PREBUILT_JNI_LIBS:= \
+         @lib/armeabi/libnativeU.so
+```
+
+```makefile
+LOCAL_PREBUILT_JNI_LIBS := \
+    @lib/$(my_src_abi)/libbitmap_parcel.so \
+    @lib/$(my_src_abi)/librectifier.so \
+    @lib/$(my_src_abi)/libwebp_android.so
+```
+
+***
+
 # LOCAL_PATH 路径名定义
 
 
