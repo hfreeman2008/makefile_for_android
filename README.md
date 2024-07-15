@@ -96,6 +96,42 @@ test.mk:12: -----x_02:foo
 
 ***
 
+# 问等于操作符–“?=”
+
+变量没有被定义过，那么变量的值就直接赋值，如果变量先前被定义过，那么这条语将什么也不做；
+
+示例1：
+
+```makefile
+FOO ?= bar
+```
+其含义是，如果FOO没有被定义过，那么变量FOO的值就是“bar”，如果FOO先前被定义过，那么这条语将什么也不做，其等价于：
+
+```makefile
+ifeq ($(origin FOO), undefined)
+FOO = bar
+endif
+```
+示例2：
+
+```makefile
+#-----------------start----------------
+x ?= test
+$(warning -----x:$(x))
+x=hello
+x ?= 100
+$(warning -----x:$(x))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+test.mk:3: -----x:test
+test.mk:6: -----x:hello
+```
+
+***
+
 ```makefile
 
 ```
