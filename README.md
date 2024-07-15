@@ -408,6 +408,33 @@ endif
 
 
 ***
+# all-subdir-makefiles
+
+返回一个位于当前’my-dir’路径的子目录列表。
+
+
+```makefile
+include $(call all-subdir-makefiles)
+```
+例如，看下面的目录层次：
+
+sources/foo/lib1/Android.mk
+
+sources/foo/lib2/Android.mk
+
+如果sources/foo/Android.mk包含一行：
+
+
+```makefile
+include $(call all-subdir-makefiles)
+```
+
+那么它就会自动包含sources/foo/lib1/Android.mk 和sources/foo/lib2/Android.mk
+这项功能用于向编译系统提供深层次嵌套的代码目录层次。
+
+注意：在默认情况下，NDK将会只搜索在sources/*/Android.mk中的文件。
+
+***
 
 ```makefile
 
