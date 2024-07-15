@@ -478,7 +478,37 @@ $(shell cp -af  device/qcom/l9010/custom_files/external/sepolicy/keys.conf  exte
 
 ***
 
+# 内置一个priv_app的应用
+
+定义此app：
+
 ```makefile
+amazon_appstore := true
+ifeq ($(amazon_appstore), true)
+include $(CLEAR_VARS)
+LOCAL_MODULE := AmazonApps-release_v16.0000.887.13C
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_SRC_FILES := $(LOCAL_MODULE).apk
+LOCAL_PRIVILEGED_MODULE := true
+include $(BUILD_PREBUILT)
+endif
+```
+
+将其内置进去：
+```makefile
+PRODUCT_COPY_FILES += vendor/tinno/blu/3rd_app/amazon_appstore/amzn.apps.ref:system/etc/amzn.apps.ref
+PRODUCT_COPY_FILES += vendor/tinno/blu/3rd_app/amazon_appstore/liblatency.so:system/lib/liblatency.so
+PRODUCT_PACKAGES += \
+    AmazonApps-release_v16.0000.887.13C \
+```
+
+***
+
+```makefile
+
 
 ```
 
