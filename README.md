@@ -707,6 +707,29 @@ LOCAL_OVERRIDES_PACKAGES := Gallery2
 
 ***
 
+# platform签名，内置为private
+
+
+```makefile
+LOCAL_PACKAGE_NAME := Settings
+LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
+```
+
+LOCAL_PACKAGE_NAME := Settings
+app应用的名称
+
+LOCAL_CERTIFICATE := platform
+代表使用platform来签名，这样的话这个apk就拥有了和system相同的签名，这需要在androidmanifest.xml文件中添加android:sharedUserId=”android.uid.system”，使得apk有system权限。
+
+LOCAL_PRIVILEGED_MODULE := true
+app应用在目录/system/priv-app/下
+
+LOCAL_PRIVILEGED_MODULE := false
+app应用在目录/system/app/下
+
+***
+
 ```makefile
 
 ```
