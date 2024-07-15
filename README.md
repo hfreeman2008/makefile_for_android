@@ -507,8 +507,35 @@ PRODUCT_PACKAGES += \
 
 ***
 
-```makefile
+# call —声明一个mk文件
 
+声明mk文件，把mk中的变量添加进来
+```makefile
+BOOTANIMATION_RES := true
+ifeq ($(BOOTANIMATION_RES), true)
+$(call inherit-product, device/qcom/l9010/res/shutdown/shut.mk)
+$(call inherit-product, device/qcom/l9010/res/animation/animation.mk)
+endif
+```
+
+如果mk文件存在，就调用mk文件：
+
+```makefile
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+```
+
+***
+# include mk文件
+
+```makefile
+include $(LOCAL_PATH)/models/Android.mk
+#Config product info
+-include device/eastaeon/$(MTK_TARGET_PROJECT)/configs/*.mk
+```
+
+***
+
+```makefile
 
 ```
 
