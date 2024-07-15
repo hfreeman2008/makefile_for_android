@@ -445,8 +445,25 @@ CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，
 
 ***
 
-```makefile
+# TARGET_OUT
 
+TARGET_OUT相当于out/target/product/l9010
+
+```makefile
+$(shell mkdir -p $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/)
+$(shell cp -af $(LOCAL_PATH)/CleanMaster_5.8.0.apk $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/CleanMaster_5.8.0.apk)
+```
+
+mkdir的-p选项允许你一次性创建多层次的目录，而不是一次只创建单独的目录。
+cp –af 源文件所在目录 放置文件夹
+
+使用shell来内置应用中的库文件：
+
+```makefile
+$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm)
+$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64)
+$(shell cp -rf $(LOCAL_PATH)/lib/arm/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm/ )
+$(shell cp -rf $(LOCAL_PATH)/lib/arm64/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64/ )
 ```
 
 ***
