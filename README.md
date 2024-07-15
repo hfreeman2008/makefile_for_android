@@ -647,6 +647,39 @@ LOCAL_PATH:= $(call my-dir)
 
 ***
 
+# 判断文件或文件夹是否存在：
+
+Android.mk 推断文件是否存在，若存在则复制该文件到某个文件夹
+
+
+```makefile
+$(shell test -f [文件] && echo yes)的值假设是yes, 则文件存在，然后进行shell cp 动作
+
+HAVE_TEST_CUST_FILE := $(shell test -f vendor/huaqin/resource/$(HQ_PROJECT)_$(HQ_CLIENT)/$(LOCAL_PATH)/DroidSansFallback.ttf && echo yes)
+ifeq ($(HAVE_TEST_CUST_FILE),yes)
+$(shell cp -f vendor/resource/$(HQ_PROJECT)_$(HQ_CLIENT)/$(LOCAL_PATH)/DroidSansFallback.ttf $(PRODUCT_OUT)/system/fonts/DroidSansFallback.ttf)
+endif
+```
+
+文件描述符
+```makefile
+-e 判断对象是否存在
+-d 判断对象是否存在，并且为目录
+-f 判断对象是否存在，并且为常规文件
+-L 判断对象是否存在，并且为符号链接
+-h 判断对象是否存在，并且为软链接
+-s 判断对象是否存在，并且长度不为0
+-r 判断对象是否存在，并且可读
+-w 判断对象是否存在，并且可写
+-x 判断对象是否存在，并且可执行
+-O 判断对象是否存在，并且属于当前用户
+-G 判断对象是否存在，并且属于当前用户组
+-nt 判断file1是否比file2新  [ "/data/file1" -nt "/data/file2" ]
+-ot 判断file1是否比file2旧  [ "/data/file1" -ot "/data/file2" ]
+```
+
+***
+
 ```makefile
 
 ```
