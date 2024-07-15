@@ -982,6 +982,33 @@ test.mk:2: ----bar foo lose
 test.mk:3: ----bar foo lose
 ```
 
+
+***
+
+## word–取单词函数
+
+功能：取字符串中第个单词。（从一开始）
+
+返回：返回字符串中第个单词。如果比中的单词数要大，那么返回空
+
+```makefile
+$(word <n>,<text> )
+```
+
+示例1:
+
+```makefile
+#-----------------start----------------
+$(warning ----$(word 1, foo bar baz))
+#-----------------end----------------
+```
+
+输出：
+
+```makefile
+test.mk:2: ----foo
+```
+
 ***
 
 ```makefile
