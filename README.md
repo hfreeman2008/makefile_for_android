@@ -697,6 +697,16 @@ endif
 
 ***
 
+# LOCAL_OVERRIDES_PACKAGES 替换app
+
+用当前app替换Gallery2
+
+```makefile
+LOCAL_OVERRIDES_PACKAGES := Gallery2
+```
+
+***
+
 ```makefile
 
 ```
