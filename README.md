@@ -4,5 +4,14 @@
 
 
 
+# 打印log
+
+```makefile
+$(error  " test   $(is-vendor-board-platform)")
+$(error  " test   0001")
+$(warning $(TARGET_ARCH))  
+$(info test,hehe)  
+```
+
 
 
