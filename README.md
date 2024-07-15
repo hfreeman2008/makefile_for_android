@@ -806,6 +806,63 @@ mon tue wed thu fri
 
 ***
 
+# strip 去空格函数
+
+功能：去掉字串中开头和结尾的空字符。
+
+返回：返回被去掉空格的字符串值。
+
+```makefile
+$(strip string)
+```
+
+示例1:
+
+```makefile
+TEST = DEFAULT 
+RESULT = no
+
+ifeq ($(strip $(TEST)), DEFAULT)
+    RESULT = yes
+endif
+```
+
+示例2:
+
+```makefile
+my_value = hello
+$(warning ----my_value:$(strip $(my_value)))
+```
+
+输出：
+
+test.mk:3: ----my_value:hello
+
+示例3:
+
+```makefile
+$(strip a b c )
+```
+
+把字串“a b c ”去到开头和结尾的空格，结果是“a b c”。
+
+示例4:
+
+```makefile
+#-----------------start----------------
+my_value_01 = hello_1
+my_value_02 = hello_2
+my_value_03 = hello_3
+
+$(warning ----:$(strip $(my_value_01) $(my_value_02) $(my_value_03)))
+#-----------------end----------------
+```
+
+输出：
+
+test.mk:6: ----:hello_1 hello_2 hello_3
+
+***
 
 
 ```makefile
