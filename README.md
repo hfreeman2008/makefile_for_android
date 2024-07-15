@@ -1187,6 +1187,30 @@ test.mk:2: -----basename:src/hellp test
 
 ***
 
+## addsuffix-加后缀函数
+
+功能：把后缀加到中的每个单词后面。
+
+返回：返回加过后缀的文件名序列。
+
+```makefile
+$(addsuffix <suffix>,<names...> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----addsuffix:$(addsuffix .java, src/hellp test))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: -----addsuffix:src/hellp.java test.java
+```
+
+
 ```makefile
 
 ```
