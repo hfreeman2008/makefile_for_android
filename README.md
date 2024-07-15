@@ -1210,6 +1210,32 @@ $(warning -----addsuffix:$(addsuffix .java, src/hellp test))
 test.mk:2: -----addsuffix:src/hellp.java test.java
 ```
 
+***
+
+## addprefix-加前缀函数
+
+功能：把前缀加到中的每个单词后面。
+
+返回：返回加过前缀的文件名序列。
+```makefile
+$(addprefix <prefix>,<names...> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----addprefix:$(addprefix src/, hellp.java test.java))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: -----addprefix:src/hellp.java src/test.java
+```
+
+
+***
 
 ```makefile
 
