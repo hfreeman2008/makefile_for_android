@@ -525,6 +525,7 @@ $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
 ```
 
 ***
+
 # include mk文件
 
 ```makefile
@@ -534,6 +535,18 @@ include $(LOCAL_PATH)/models/Android.mk
 ```
 
 ***
+
+# PRODUCT_PROPERTY_OVERRIDES–系统属性值的覆盖
+
+```makefile
+PRODUCT_PROPERTY_OVERRIDES += \
+       dalvik.vm.heapgrowthlimit=128m \
+       dalvik.vm.heapminfree=6m \
+       dalvik.vm.heapstartsize=14m
+```
+
+***
+
 
 ```makefile
 
