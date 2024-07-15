@@ -1139,6 +1139,31 @@ test.mk:2: -----notdir:hellp.java test.sh
 ```
 ***
 
+## suffix-取后缀函数
+功能：从文件名序列中取出各个文件名的后缀。
+
+返回：返回文件名序列的后缀序列，如果文件没有后缀，则返回空字串。
+
+```makefile
+$(suffix <names...> )
+```
+
+示例1:
+```makefile
+#-----------------start----------------
+$(warning -----suffix:$(suffix src/hellp.java test.sh))
+#-----------------end----------------
+```
+
+
+输出：
+```makefile
+test.mk:2: -----suffix:.java .sh
+```
+
+
+***
+
 ```makefile
 
 ```
