@@ -244,7 +244,7 @@ export EX_VAR += value
 
 ***
 
-# 判断 ifeq ifneq
+# ifeq ifneq-判断
 
 ifeq 比较参数“arg1”和“arg2”的值是否相同，如果相同则为真。
 ```makefile
@@ -343,7 +343,7 @@ endif
 
 ***
 
-# ifdef ifndef
+# ifdef ifndef-是否定义
 
 如果变量的值非空，那到表达式为真。否则，表达式为假。当然，同样可以是一个函数的返回值。
 
@@ -405,7 +405,7 @@ endif
 
 ***
 
-# foreach 循环函数
+# foreach-循环函数
 
 ```makefile
 $(foreach <var>,<list>,<text> )
@@ -432,7 +432,7 @@ test.mk:4: -----file:a.java b.java c.java d.java
 
 ***
 
-# 文件复制 PRODUCT_COPY_FILES
+# PRODUCT_COPY_FILES-文件复制
 
 复制文件到对应位置
 
@@ -453,7 +453,7 @@ PRODUCT_COPY_FILES += vendor/packages/apks/default_workspace.xml:system/etc/defa
 
 ***
 
-# 添加应用 PRODUCT_PACKAGES
+# PRODUCT_PACKAGES-添加应用
 
 示例1：
 ```makefile
@@ -467,7 +467,7 @@ PRODUCT_PACKAGES += \
 # 特殊变量
 
 
-## TARGET_BUILD_VARIANT编译类型（user ，userdebug，eng）
+## TARGET_BUILD_VARIANT-编译类型user,userdebug,eng
 
 示例1：
 
@@ -527,7 +527,7 @@ $(shell cp -rf $(LOCAL_PATH)/lib/arm64/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MO
 ***
 
 
-## PLATFORM平台
+## PLATFORM-平台
 芯片平台，是MTK,还是QCOM
 
 ```makefile
@@ -751,7 +751,7 @@ PRODUCT_PACKAGES += \
 
 ***
 
-# call —声明一个mk文件
+# call—声明一个mk文件
 
 声明mk文件，把mk中的变量添加进来
 ```makefile
@@ -770,7 +770,7 @@ $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
 
 ***
 
-# include mk文件
+# include-mk文件
 
 ```makefile
 include $(LOCAL_PATH)/models/Android.mk
@@ -793,7 +793,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ***
 
-# LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES 配置jar包到项目中
+# LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES-配置jar包到项目中
 
 可以参考---packages\apps\CMFileManager\Android.mk
 
@@ -815,7 +815,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 ***
 
-# LOCAL_PREBUILT_JNI_LIBS 复制内置apk中的so文件：
+# LOCAL_PREBUILT_JNI_LIBS-复制内置apk中的so文件
 
 ```makefile
 LOCAL_PREBUILT_JNI_LIBS:= \
@@ -832,7 +832,7 @@ LOCAL_PREBUILT_JNI_LIBS := \
 
 ***
 
-# 判断文件或文件夹是否存在：
+# 判断文件或文件夹是否存在
 
 Android.mk 推断文件是否存在，若存在则复制该文件到某个文件夹
 
@@ -866,7 +866,7 @@ endif
 
 ***
 
-# LOCAL_OVERRIDES_PACKAGES 替换app
+# LOCAL_OVERRIDES_PACKAGES-替换app
 
 用当前app替换Gallery2
 
@@ -876,7 +876,7 @@ LOCAL_OVERRIDES_PACKAGES := Gallery2
 
 ***
 
-# platform签名，内置为private
+# LOCAL_CERTIFICATE-platform签名
 
 
 ```makefile
@@ -900,6 +900,7 @@ app应用在目录/system/app/下
 ***
 
 # 使用函数
+
 在Makefile中可以使用函数来处理变量，从而让我们的命令或是规则更为的灵活和具有智能。make所支持的函数也不算很多，不过已经足够我们的操作了。函数调用后，函数的返回值可以当做变量来使用。
 函数调用，很像变量的使用，也是以“$”来标识的.
 
@@ -914,7 +915,7 @@ ${<function> <arguments>}
 
 ***
 
-## filter 和 filter-out 
+## filter filter-out 
 
 过滤函数和反过滤函数
 
@@ -959,7 +960,7 @@ mon tue wed thu fri
 
 ***
 
-## strip 去空格函数
+## strip-去空格函数
 
 功能：去掉字串中开头和结尾的空字符。
 
