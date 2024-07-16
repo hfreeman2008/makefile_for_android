@@ -483,6 +483,30 @@ DEFINES += MTK_BUILD_DEFAULT_UNLOCK
 endif
 ```
 
+***
+
+# TARGET_OUT
+
+TARGET_OUT相当于out/target/product/l9010
+
+```makefile
+$(shell mkdir -p $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/)
+$(shell cp -af $(LOCAL_PATH)/CleanMaster_5.8.0.apk $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/CleanMaster_5.8.0.apk)
+```
+
+mkdir的-p选项允许你一次性创建多层次的目录，而不是一次只创建单独的目录。
+cp –af 源文件所在目录 放置文件夹
+
+使用shell来内置应用中的库文件：
+
+```makefile
+$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm)
+$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64)
+$(shell cp -rf $(LOCAL_PATH)/lib/arm/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm/ )
+$(shell cp -rf $(LOCAL_PATH)/lib/arm64/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64/ )
+```
+
+***
 
 
 
@@ -497,6 +521,7 @@ endif
 
 
 ***
+
 # all-subdir-makefiles
 
 返回一个位于当前’my-dir’路径的子目录列表。
@@ -532,28 +557,6 @@ CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，
 
 这个清理动作是必须的，因为所有的编译控制文件由同一个GNU Make解析和执行，其变量是全局的。所以清理后才能避免相互影响。
 
-***
-
-# TARGET_OUT
-
-TARGET_OUT相当于out/target/product/l9010
-
-```makefile
-$(shell mkdir -p $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/)
-$(shell cp -af $(LOCAL_PATH)/CleanMaster_5.8.0.apk $(TARGET_OUT)/pre-install/CleanMaster_5.8.0/CleanMaster_5.8.0.apk)
-```
-
-mkdir的-p选项允许你一次性创建多层次的目录，而不是一次只创建单独的目录。
-cp –af 源文件所在目录 放置文件夹
-
-使用shell来内置应用中的库文件：
-
-```makefile
-$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm)
-$(shell mkdir -p  $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64)
-$(shell cp -rf $(LOCAL_PATH)/lib/arm/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm/ )
-$(shell cp -rf $(LOCAL_PATH)/lib/arm64/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MODULE)/lib/arm64/ )
-```
 
 ***
 
