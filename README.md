@@ -1358,6 +1358,32 @@ $(shell  cp -f  device/mediatek/common/fmradio/tda7729xycfg_open.h   kernel-3.18
 
 ***
 
+## xy_product_copy_files-复制文件的方法
+
+定义一个专门复制文件的方法xy_product_copy_files，再将文件复现到设备的位置，也就是out目录下：
+
+在mk文件中，将配置文件复制对应位置 
+
+```makefile
+##add hexiaoming xy_auto modify android version 10.0 (for third apk) 20220414 start
+$(call xy_product_copy_files,device/mediatek/ac8227l/andsdk_third_app_white_list_xyauto.conf,system/etc/xy,andsdk_third_app_white_list_xyauto.conf)
+##add hexiaoming xy_auto modify android version 10.0 (for third apk) 20220414 end
+```
+
+
+在mk中，实现xy_product_copy_files方法
+
+```makefile
+####################cust define fuction################
+define xy_product_copy_files
+$(shell  mkdir -p  out/target/product/$(XY_PLATFORM)/$(2) ; \
+         cp  -rf $(1)  out/target/product/$(XY_PLATFORM)/$(2)/$(3) ;)
+endef
+```
+
+
+***
+
 ```makefile
 
 ```
