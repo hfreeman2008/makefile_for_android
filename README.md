@@ -2,7 +2,11 @@
 
 这篇文章主要是一个对于android开发时常用的makefile(mk)笔记。
 
-# 指定编译文件
+
+# make方法
+
+
+## 指定编译文件
 
 指定特定的Makefile，你可以使用make的“-f”和“–file”参数.
 
@@ -11,6 +15,75 @@ make -f Make.Linux
 make –file Make.AIX
 make -f test.mk
 ```
+
+GNU make找寻默认的Makefile的规则是在当前目录下依次找三个文件–“GNUmakefile”，“makefile”和“Makefile”。
+
+其按顺序找这三个文件，一旦找到，就开始读取这个文件并执行。
+
+
+
+***
+## make的退出码
+make命令执行后有三个退出码：
+
+0 —— 表示成功执行。
+
+1 —— 如果make运行时出现任何错误，其返回1。
+
+2 —— 如果你使用了make的“-q”选项，并且make使得一些目标不需要更新，那么返回2。
+
+
+***
+
+## make的参数
+
+```makefile
+make -h
+用法：make [选项] [目标] ...
+选项：
+  -b, -m                      忽略兼容性。
+  -B, --always-make           Unconditionally make all targets.
+  -C 目录, --directory=目录
+                              在所有操作前切换到“目录”。
+  -d                          打印大量调试信息。
+  --debug[=FLAGS]             打印各种调试信息
+  -e, --environment-overrides
+                              指定替代makefile中默认设置的环境变量
+  -f FILE, --file=FILE, --makefile=FILE
+                              读取 FILE 作为一个 makefile.
+  -h, --help                  打印该消息并退出。
+  -i, --ignore-errors         Ignore errors from commands.
+  -I DIRECTORY, --include-dir=DIRECTORY
+                              搜索 DIRECTORY 为包含的 makefiles.
+  -j [N], --jobs[=N]          同时允许 N 个任务；无参数表明允许无限个任务。
+  -k, --keep-going            当某些目标无法创建时仍然继续。
+  -l [N], --load-average[=N], --max-load[=N]
+                              不开始多线程工作除非系统负载低于N
+  -L, --check-symlink-times   Use the latest mtime between symlinks and target.
+  -n, --just-print, --dry-run, --recon
+                              不要实际运行任何命令;仅仅输出他们
+  -o FILE, --old-file=FILE, --assume-old=FILE
+                              将FILE认作非常老,不要重新make它.
+  -p, --print-data-base       打印 make 的内部数据库。
+  -q, --question               不运行任何命令；退出状态说明是否已全部更新。
+  -r, --no-builtin-rules      禁用内置隐含规则。
+  -R, --no-builtin-variables   禁用内置变量设置。
+  -s, --silent, --quiet       不显示命令。
+  -S, --no-keep-going, --stop
+                              关闭 -k.
+  -t, --touch                 touch 目标而不是重新创建它们
+  -v, --version               打印 make 的版本号并退出。
+  -w, --print-directory       打印当前目录。
+  --no-print-directory        即使 -w 隐式开启，也要关闭 -w。
+  -W FILE, --what-if=FILE, --new-file=FILE, --assume-new=FILE
+                              将FILE认作无限新.
+  --warn-undefined-variables  Warn when an undefined variable is referenced.
+
+这个程序创建为 i686-pc-linux-gnu
+Report bugs to <bug-make@gnu.org>
+```
+
+
 
 ***
 
