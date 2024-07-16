@@ -1609,22 +1609,6 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 ```
 
 
-
-
-
-
-***
-
-```makefile
-
-```
-
-***
-
-```makefile
-
-```
-
 ***
 
 
@@ -1647,9 +1631,6 @@ make snod
 
 ***
 
-```makefile
-
-```
 
 # 参考资料
 1.https://blog.csdn.net/hfreeman2008/article/details/46792693
