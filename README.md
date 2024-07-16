@@ -445,7 +445,11 @@ PRODUCT_PACKAGES += \
 ```
 ***
 
-# TARGET_BUILD_VARIANT编译类型（user ，userdebug，eng）
+
+# 特殊变量
+
+
+## TARGET_BUILD_VARIANT编译类型（user ，userdebug，eng）
 
 示例1：
 
@@ -478,6 +482,18 @@ ifneq ($(filter userdebug, $(TARGET_BUILD_VARIANT)),)
 DEFINES += MTK_BUILD_DEFAULT_UNLOCK
 endif
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ***
