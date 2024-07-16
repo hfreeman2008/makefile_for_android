@@ -602,7 +602,49 @@ LOCAL_PATH:= $(call my-dir)
 
 ***
 
+## override-指示符
 
+如果有变量是通常make的命令行参数设置的，那么Makefile中对这个变量的赋值会被忽略。如果你想在Makefile中设置这类参数的值，那么，你可以使用“override”指示符。
+
+其语法是：
+
+```makefile
+override <variable> = <value>
+override <variable> := <value>
+override <variable> += <more text>
+```
+
+./build/kati/testcase/override_define.mk
+```makefile
+override CC := gcc
+override  AS = as
+```
+
+示例1：
+```makefile
+#-----------------start----------------
+$(warning -----var_01:$(var_01))
+var_01 = test_01
+$(warning -----var_01:$(var_01))
+override var_01 = test_01
+$(warning -----var_01:$(var_01))
+#-----------------end----------------
+```
+
+编译命令：
+
+```makefile
+make var_01=test   -f test.mk 
+```
+
+输出：
+```makefile
+test.mk:2: -----var_01:test
+test.mk:4: -----var_01:test
+test.mk:6: -----var_01:test_01
+```
+
+***
 
 
 
@@ -747,49 +789,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.heapstartsize=14m
 ```
 
-***
-
-# override 指示符
-
-如果有变量是通常make的命令行参数设置的，那么Makefile中对这个变量的赋值会被忽略。如果你想在Makefile中设置这类参数的值，那么，你可以使用“override”指示符。
-
-其语法是：
-
-```makefile
-override <variable> = <value>
-override <variable> := <value>
-override <variable> += <more text>
-```
-
-./build/kati/testcase/override_define.mk
-```makefile
-override CC := gcc
-override  AS = as
-```
-
-示例1：
-```makefile
-#-----------------start----------------
-$(warning -----var_01:$(var_01))
-var_01 = test_01
-$(warning -----var_01:$(var_01))
-override var_01 = test_01
-$(warning -----var_01:$(var_01))
-#-----------------end----------------
-```
-
-编译命令：
-
-```makefile
-make var_01=test   -f test.mk 
-```
-
-输出：
-```makefile
-test.mk:2: -----var_01:test
-test.mk:4: -----var_01:test
-test.mk:6: -----var_01:test_01
-```
 
 
 ***
