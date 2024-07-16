@@ -521,6 +521,21 @@ endif
 ***
 
 
+## TARGET_PRODUCT-项目名变量：
+
+这个就是lunch时选择项目的名字
+
+```makefile
+$(call inherit-product,device/xthink/$(TARGET_PRODUCT)/$(TARGET_PRODUCT)/sounds/sounds.mk)
+```
+
+```makefile
+ifeq ($(TARGET_PRODUCT),VIA_A4)
+PRODUCT_PACKAGES += GoogleDialer
+PRODUCT_PACKAGES += DeskClockGoogle
+endif
+```
+
 
 
 
@@ -794,22 +809,6 @@ endif
 -ot 判断file1是否比file2旧  [ "/data/file1" -ot "/data/file2" ]
 ```
 
-***
-
-# TARGET_PRODUCT--项目名变量：
-
-这个就是lunch时选择项目的名字
-
-```makefile
-$(call inherit-product,device/xthink/$(TARGET_PRODUCT)/$(TARGET_PRODUCT)/sounds/sounds.mk)
-```
-
-```makefile
-ifeq ($(TARGET_PRODUCT),VIA_A4)
-PRODUCT_PACKAGES += GoogleDialer
-PRODUCT_PACKAGES += DeskClockGoogle
-endif
-```
 
 ***
 
