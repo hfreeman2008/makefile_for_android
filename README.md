@@ -1546,3 +1546,12 @@ make snod
 ```makefile
 
 ```
+
+# 参考资料
+1.https://blog.csdn.net/hfreeman2008/article/details/46792693
+
+android开发笔记之mk文件
+
+2.https://blog.csdn.net/hfreeman2008/article/details/71418693
+
+android开发笔记之Makefile（一）
