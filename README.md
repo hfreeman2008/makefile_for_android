@@ -712,15 +712,8 @@ CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，
 这个清理动作是必须的，因为所有的编译控制文件由同一个GNU Make解析和执行，其变量是全局的。所以清理后才能避免相互影响。
 
 
-***
 
-# 复制文件来覆盖对应的文件
-```makefile
-#cp custom files
-$(shell cp -af  device/qcom/l9010/custom_files/bdroid_buildcfg.h  device/qcom/l9010/bdroid_buildcfg.h )
-$(shell cp -af  device/qcom/l9010/custom_files/buildinfo.sh   build/tools/buildinfo.sh   )
-$(shell cp -af  device/qcom/l9010/custom_files/external/sepolicy/keys.conf  external/sepolicy/keys.conf)
-```
+
 
 ***
 
@@ -1595,10 +1588,16 @@ $(shell  cp -f  device/mediatek/common/fmradio/tda7729xycfg_open.h   kernel-3.18
 ```
 
 
+***
 
 
-
-
+## 复制文件来覆盖对应的文件
+```makefile
+#cp custom files
+$(shell cp -af  device/qcom/l9010/custom_files/bdroid_buildcfg.h  device/qcom/l9010/bdroid_buildcfg.h )
+$(shell cp -af  device/qcom/l9010/custom_files/buildinfo.sh   build/tools/buildinfo.sh   )
+$(shell cp -af  device/qcom/l9010/custom_files/external/sepolicy/keys.conf  external/sepolicy/keys.conf)
+```
 
 
 
