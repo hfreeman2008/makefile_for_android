@@ -618,80 +618,10 @@ test.mk:4: -----var_01:test
 test.mk:6: -----var_01:test_01
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-***
-
-# all-subdir-makefiles
-
-返回一个位于当前’my-dir’路径的子目录列表。
-
-
-```makefile
-include $(call all-subdir-makefiles)
-```
-例如，看下面的目录层次：
-
-sources/foo/lib1/Android.mk
-
-sources/foo/lib2/Android.mk
-
-如果sources/foo/Android.mk包含一行：
-
-
-```makefile
-include $(call all-subdir-makefiles)
-```
-
-那么它就会自动包含sources/foo/lib1/Android.mk 和sources/foo/lib2/Android.mk
-这项功能用于向编译系统提供深层次嵌套的代码目录层次。
-
-注意：在默认情况下，NDK将会只搜索在sources/*/Android.mk中的文件。
-
-***
-
-# include $(CLEAR_VARS)
-
-CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，由它负责清理很多LOCAL_xxx.
-例如：LOCAL_MODULE, LOCAL_SRC_FILES, LOCAL_STATIC_LIBRARIES等等。但不清理LOCAL_PATH.
-
-这个清理动作是必须的，因为所有的编译控制文件由同一个GNU Make解析和执行，其变量是全局的。所以清理后才能避免相互影响。
-
-
-
-
 
 ***
 
 # app相关的配置
-
-
 
 
 ***
@@ -810,6 +740,55 @@ PRODUCT_PACKAGES += \
     Phonesky \
     SetupWizard
 ```
+
+***
+
+
+## all-subdir-makefiles
+
+返回一个位于当前’my-dir’路径的子目录列表。
+
+
+```makefile
+include $(call all-subdir-makefiles)
+```
+例如，看下面的目录层次：
+
+sources/foo/lib1/Android.mk
+
+sources/foo/lib2/Android.mk
+
+如果sources/foo/Android.mk包含一行：
+
+
+```makefile
+include $(call all-subdir-makefiles)
+```
+
+那么它就会自动包含sources/foo/lib1/Android.mk 和sources/foo/lib2/Android.mk
+这项功能用于向编译系统提供深层次嵌套的代码目录层次。
+
+注意：在默认情况下，NDK将会只搜索在sources/*/Android.mk中的文件。
+
+***
+
+## include $(CLEAR_VARS)
+
+CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，由它负责清理很多LOCAL_xxx.
+例如：LOCAL_MODULE, LOCAL_SRC_FILES, LOCAL_STATIC_LIBRARIES等等。但不清理LOCAL_PATH.
+
+这个清理动作是必须的，因为所有的编译控制文件由同一个GNU Make解析和执行，其变量是全局的。所以清理后才能避免相互影响。
+
+
+
+
+
+
+
+
+
+
+
 
 
 
