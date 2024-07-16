@@ -1554,6 +1554,21 @@ source ${ANDROID_BUILD_TOP}/build/envsetup.sh
 
 ***
 
+## export-传参
+
+同一个进程
+
+```makefile
+export EX_VAR = value
+export EX_VAR := value
+export EX_VAR += value
+```
+
+
+注意：是同一个进程下的make才有用。当多级遍历make时是无法全局的。
+
+***
+
 ```makefile
 
 ```
