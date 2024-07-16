@@ -509,6 +509,25 @@ $(shell cp -rf $(LOCAL_PATH)/lib/arm64/lib*.so $(TARGET_OUT)/priv-app/$(LOCAL_MO
 ***
 
 
+## PLATFORM平台
+芯片平台，是MTK,还是QCOM
+
+```makefile
+ifneq ((strip(strip(PLATFORM)), QCOM)
+PRODUCT_PACKAGES += XXX
+endif
+```
+
+***
+
+
+
+
+
+
+
+
+
 
 
 
@@ -681,17 +700,6 @@ test.mk:4: -----var_01:test
 test.mk:6: -----var_01:test_01
 ```
 
-
-***
-
-# PLATFORM平台
-芯片平台，是MTK,还是QCOM
-
-```makefile
-ifneq ((strip(strip(PLATFORM)), QCOM)
-PRODUCT_PACKAGES += XXX
-endif
-```
 
 ***
 
