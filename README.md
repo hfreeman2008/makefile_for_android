@@ -564,6 +564,38 @@ source ${ANDROID_BUILD_TOP}/build/envsetup.sh
 
 ***
 
+## LOCAL_PATH-路径名
+
+```makefile
+LOCAL_PATH := device/xthink/N30/N30/sounds
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/ringtones/Aquila.ogg:system/media/audio/ringtones/Aquila.ogg \
+```
+
+
+```makefile
+LOCAL_PATH:= $(call my-dir)
+```
+
+每个Android.mk文件必须以定义LOCAL_PATH为开始。它用于在开发tree中查找源文件。
+
+宏my-dir 则由Build System提供。
+
+返回包含Android.mk的目录路径，这个路径非常有用。
+
+
+***
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -782,27 +814,6 @@ LOCAL_PREBUILT_JNI_LIBS := \
     @lib/$(my_src_abi)/libwebp_android.so
 ```
 
-***
-
-# LOCAL_PATH 路径名定义
-
-
-```makefile
-LOCAL_PATH := device/xthink/N30/N30/sounds
-PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/ringtones/Aquila.ogg:system/media/audio/ringtones/Aquila.ogg \
-```
-
-
-```makefile
-LOCAL_PATH:= $(call my-dir)
-```
-
-每个Android.mk文件必须以定义LOCAL_PATH为开始。它用于在开发tree中查找源文件。
-
-宏my-dir 则由Build System提供。
-
-返回包含Android.mk的目录路径，这个路径非常有用。
 
 ***
 
