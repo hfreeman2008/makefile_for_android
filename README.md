@@ -1511,6 +1511,25 @@ $(wildcard os/cpu/$(CPU)/inc/cpu/*.h)
 
 ***
 
+# c文件添加开关
+
+在Android.mk文件中添加开关的定义：
+```makefile
+#ifneq ($(filter userdebug eng,$(TARGET_BUILD_VARIANT)),)
+LOCAL_CFLAGS += -DBD_ADDR_AUTOGEN
+#endif
+```
+
+
+在.c文件中进行使用：
+```makefile
+#ifdef BD_ADDR_AUTOGEN
+GetRandomValue(btinit->bt_nvram.fields.addr);
+#endif
+```
+
+***
+
 ```makefile
 
 ```
