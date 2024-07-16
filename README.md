@@ -3,6 +3,8 @@
 这篇文章主要是一个对于android开发时常用的makefile(mk)笔记。
 
 
+![甜美](甜美.png)
+
 ***
 
 # 打印log
