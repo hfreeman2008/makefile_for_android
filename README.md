@@ -1457,6 +1457,60 @@ endef
 
 ***
 
+## wildcard-扩展通配符
+示例1:
+```makefile
+$(info "wildcard test002----:$(wildcard test002)")
+$(info "wildcard test.mk----:$(wildcard test.mk)")
+```
+
+输出:
+```makefile
+"wildcard test002----:test002"
+"wildcard test.mk----:test.mk"
+```
+
+示例2:
+
+判断文件是否存在：
+
+匹配是否有include/config.mk这个文件，如果没有的话会返回空，这个ifeq就会成立，也就会输出错误。
+
+```makefile
+ifeq ($(wildcard include/config.mk),)
+$(error "System not configured - see README")
+endif
+```
+
+示例3:
+
+判断目录是否存在：
+
+```makefile
+ifeq ($(wildcard test002),)
+$(info "0001---if---test002")
+else
+$(info "0002---else---test002")
+endif
+```
+
+输出:
+```makefile
+"0002---else---test002"
+```
+
+
+示例4:
+
+wildcard 用来明确表示通配符
+
+```makefile
+$(wildcard os/cpu/$(CPU)/inc/cpu/*.h)
+```
+
+
+***
+
 ```makefile
 
 ```
