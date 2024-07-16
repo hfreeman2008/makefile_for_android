@@ -246,6 +246,19 @@ export EX_VAR += value
 
 ***
 
+## PRODUCT_PACKAGES-添加应用
+
+示例1：
+```makefile
+PRODUCT_PACKAGES += \
+    Phonesky \
+    SetupWizard
+```
+
+
+***
+
+
 # ifeq ifneq-判断
 
 ifeq 比较参数“arg1”和“arg2”的值是否相同，如果相同则为真。
@@ -453,16 +466,9 @@ device/qcom/media/media_codecs_8929.xml:system/etc/media_codecs_8929.xml
 PRODUCT_COPY_FILES += vendor/packages/apks/default_workspace.xml:system/etc/default_workspace.xml
 ```
 
-***
 
-# PRODUCT_PACKAGES-添加应用
 
-示例1：
-```makefile
-PRODUCT_PACKAGES += \
-    Phonesky \
-    SetupWizard
-```
+
 ***
 
 
