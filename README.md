@@ -485,7 +485,7 @@ endif
 
 ***
 
-# TARGET_OUT
+## TARGET_OUT
 
 TARGET_OUT相当于out/target/product/l9010
 
