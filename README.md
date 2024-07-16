@@ -1452,68 +1452,6 @@ test.mk:4: -----result:ab
 
 ***
 
-## shell函数
-shell 函数也不像其它的函数，它的参数应该就是操作系统Shell的命令。
-
-它和反引号“`”是相同的功能。shell函数把执行操作系统命令后的输出作为函数返回。
-
-于是，我们可以用操作系统命令以及字符串处理命令awk，sed等等命令来生成一个变量。
-
-示例1:
-```makefile
-#-----------------start----------------
-result=$(shell cat test.mk)
-$(warning -----result:$(result))
-result=$(shell echo *.mk)
-$(warning -----result:$(result))
-#-----------------end----------------
-```
-
-输出：
-```makefile
-test.mk:3: -----result:#-----------------start---------------- result=$(shell cat test.mk) $(warning -----result:$(result)) result=$(shell echo *.mk) $(warning -----result:$(result)) #-----------------end----------------
-test.mk:5: -----result:test _02.mk test.mk
-```
-
-
-注意，这个函数会新生成一个Shell程序来执行命令，所以你要注意其运行性能，如果你的Makefile中有一些比较复杂的规则，并大量使用了这个函数，那么对于你的系统性能是有害的。
-
-特别是Makefile的隐晦的规则可能会让你的shell函数执行的次数比你想像的多得多。
-
-示例2:
-执行shell命令，如git checkout:
-
-```makefile
-$(warning  "XY_AUTO_BUILD_GREEN_VERSION= $(XY_AUTO_BUILD_GREEN_VERSION)")
-ifeq ($(strip $(XY_AUTO_BUILD_GREEN_VERSION)), yes)
-   $(shell  git checkout  ./vendor/mediatek/proprietary/bootable/bootloader/lk/dev/logo/cmcc_1024x600/cmcc_1024x600_kernel.bmp ;)
-   $(shell  git checkout  ./vendor/mediatek/proprietary/bootable/bootloader/lk/dev/logo/cmcc_1024x600/cmcc_1024x600_uboot.bmp ;)
-   $(shell  git checkout  ./vendor/mediatek/proprietary/packages/3rd-party/bootanimation/ ;)
-endif
-```
-示例3:
-执行sh脚本：
-
-```makefile
-ifeq ($(strip $(ASSISTANT_BOARD)),TXZ_EN)
- $(shell ./vendor/mediatek/proprietary/packages/3rd-party/voice_txz/push_txz_xyauto.sh $(XY_PLATFORM) 1 )
-else ifeq ($(strip $(ASSISTANT_BOARD)),TXZ_VI)
- $(shell ./vendor/mediatek/proprietary/packages/3rd-party/voice_txz/push_txz_xyauto.sh $(XY_PLATFORM) 2 )
-endif
-```
-示例4:
-执行常见的shell命令
-
-```makefile
-$(shell sed -i "/ZLINK_SUPPORT/c #define ZLINK_SUPPORT 0" kernel-3.18/include/linux/adau1701config.h )
-ifeq ($(strip $(ZLINK_SUPPORT)), true)
-   $(shell sed -i "/ZLINK_SUPPORT/c #define ZLINK_SUPPORT 1" kernel-3.18/include/linux/adau1701config.h )
-endif
-$(shell  cp -f  device/mediatek/common/fmradio/tda7729xycfg_open.h   kernel-3.18/sound/soc/codecs/tda7729xycfg.h ;)
-```
-
-***
-
 ## xy_product_copy_files-复制文件的方法
 
 定义一个专门复制文件的方法xy_product_copy_files，再将文件复现到设备的位置，也就是out目录下：
@@ -1593,6 +1531,82 @@ $(wildcard os/cpu/$(CPU)/inc/cpu/*.h)
 
 
 ***
+
+
+# shell函数
+
+shell 函数也不像其它的函数，它的参数应该就是操作系统Shell的命令。
+
+它和反引号“`”是相同的功能。shell函数把执行操作系统命令后的输出作为函数返回。
+
+于是，我们可以用操作系统命令以及字符串处理命令awk，sed等等命令来生成一个变量。
+
+示例1:
+```makefile
+#-----------------start----------------
+result=$(shell cat test.mk)
+$(warning -----result:$(result))
+result=$(shell echo *.mk)
+$(warning -----result:$(result))
+#-----------------end----------------
+```
+
+输出：
+```makefile
+test.mk:3: -----result:#-----------------start---------------- result=$(shell cat test.mk) $(warning -----result:$(result)) result=$(shell echo *.mk) $(warning -----result:$(result)) #-----------------end----------------
+test.mk:5: -----result:test _02.mk test.mk
+```
+
+
+注意，这个函数会新生成一个Shell程序来执行命令，所以你要注意其运行性能，如果你的Makefile中有一些比较复杂的规则，并大量使用了这个函数，那么对于你的系统性能是有害的。
+
+特别是Makefile的隐晦的规则可能会让你的shell函数执行的次数比你想像的多得多。
+
+示例2:
+执行shell命令，如git checkout:
+
+```makefile
+$(warning  "XY_AUTO_BUILD_GREEN_VERSION= $(XY_AUTO_BUILD_GREEN_VERSION)")
+ifeq ($(strip $(XY_AUTO_BUILD_GREEN_VERSION)), yes)
+   $(shell  git checkout  ./vendor/mediatek/proprietary/bootable/bootloader/lk/dev/logo/cmcc_1024x600/cmcc_1024x600_kernel.bmp ;)
+   $(shell  git checkout  ./vendor/mediatek/proprietary/bootable/bootloader/lk/dev/logo/cmcc_1024x600/cmcc_1024x600_uboot.bmp ;)
+   $(shell  git checkout  ./vendor/mediatek/proprietary/packages/3rd-party/bootanimation/ ;)
+endif
+```
+示例3:
+执行sh脚本：
+
+```makefile
+ifeq ($(strip $(ASSISTANT_BOARD)),TXZ_EN)
+ $(shell ./vendor/mediatek/proprietary/packages/3rd-party/voice_txz/push_txz_xyauto.sh $(XY_PLATFORM) 1 )
+else ifeq ($(strip $(ASSISTANT_BOARD)),TXZ_VI)
+ $(shell ./vendor/mediatek/proprietary/packages/3rd-party/voice_txz/push_txz_xyauto.sh $(XY_PLATFORM) 2 )
+endif
+```
+示例4:
+执行常见的shell命令
+
+```makefile
+$(shell sed -i "/ZLINK_SUPPORT/c #define ZLINK_SUPPORT 0" kernel-3.18/include/linux/adau1701config.h )
+ifeq ($(strip $(ZLINK_SUPPORT)), true)
+   $(shell sed -i "/ZLINK_SUPPORT/c #define ZLINK_SUPPORT 1" kernel-3.18/include/linux/adau1701config.h )
+endif
+$(shell  cp -f  device/mediatek/common/fmradio/tda7729xycfg_open.h   kernel-3.18/sound/soc/codecs/tda7729xycfg.h ;)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+***
+
 
 # c文件添加开关
 
