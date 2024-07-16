@@ -244,17 +244,6 @@ export EX_VAR += value
 
 注意：是同一个进程下的make才有用。当多级遍历make时是无法全局的。
 
-***
-
-## PRODUCT_PACKAGES-添加应用
-
-示例1：
-```makefile
-PRODUCT_PACKAGES += \
-    Phonesky \
-    SetupWizard
-```
-
 
 ***
 
@@ -811,13 +800,16 @@ app应用在目录/system/priv-app/下
 LOCAL_PRIVILEGED_MODULE := false
 app应用在目录/system/app/下
 
+***
 
+## PRODUCT_PACKAGES-添加应用
 
-
-
-
-
-
+示例1：
+```makefile
+PRODUCT_PACKAGES += \
+    Phonesky \
+    SetupWizard
+```
 
 
 
