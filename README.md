@@ -700,7 +700,15 @@ CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，
 
 ***
 
-# 内置一个priv_app的应用
+# app相关的配置
+
+
+
+
+***
+
+
+## 内置一个priv_app的应用
 
 定义此app：
 
@@ -726,6 +734,52 @@ PRODUCT_COPY_FILES += vendor/tinno/blu/3rd_app/amazon_appstore/liblatency.so:sys
 PRODUCT_PACKAGES += \
     AmazonApps-release_v16.0000.887.13C \
 ```
+
+
+
+***
+
+## LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES-配置jar包到项目中
+
+可以参考---packages\apps\CMFileManager\Android.mk
+
+内置一个ireadygo_keyadapter.jar到应用中。
+(1)新建libs文件，将ireadygo_keyadapter.jar添加到libs文件中
+(2)在Android.mk文件中添加：
+
+```makefile
+
+LOCAL_STATIC_JAVA_LIBRARIES += ireadygo_keyadapter
+.....................................................
+include $(CLEAR_VARS)
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+    ireadygo_keyadapter:libs/ireadygo_keyadapter.jar
+
+include $(BUILD_MULTI_PREBUILT)
+include $(call all-makefiles-under,$(LOCAL_PATH))
+```
+
+***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ***
 
@@ -769,27 +823,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 
-***
-
-# LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES-配置jar包到项目中
-
-可以参考---packages\apps\CMFileManager\Android.mk
-
-内置一个ireadygo_keyadapter.jar到应用中。
-(1)新建libs文件，将ireadygo_keyadapter.jar添加到libs文件中
-(2)在Android.mk文件中添加：
-
-```makefile
-
-LOCAL_STATIC_JAVA_LIBRARIES += ireadygo_keyadapter
-.....................................................
-include $(CLEAR_VARS)
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
-    ireadygo_keyadapter:libs/ireadygo_keyadapter.jar
-
-include $(BUILD_MULTI_PREBUILT)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-```
 
 ***
 
