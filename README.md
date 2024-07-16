@@ -763,6 +763,53 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 
 
+## LOCAL_PREBUILT_JNI_LIBS-复制内置apk中的so文件
+
+```makefile
+LOCAL_PREBUILT_JNI_LIBS:= \
+         @lib/armeabi/libnativeU.so
+```
+
+```makefile
+LOCAL_PREBUILT_JNI_LIBS := \
+    @lib/$(my_src_abi)/libbitmap_parcel.so \
+    @lib/$(my_src_abi)/librectifier.so \
+    @lib/$(my_src_abi)/libwebp_android.so
+```
+
+
+***
+
+## LOCAL_OVERRIDES_PACKAGES-替换app
+
+用当前app替换Gallery2
+
+```makefile
+LOCAL_OVERRIDES_PACKAGES := Gallery2
+```
+
+***
+
+## LOCAL_CERTIFICATE-platform签名
+
+
+```makefile
+LOCAL_PACKAGE_NAME := Settings
+LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
+```
+
+LOCAL_PACKAGE_NAME := Settings
+app应用的名称
+
+LOCAL_CERTIFICATE := platform
+代表使用platform来签名，这样的话这个apk就拥有了和system相同的签名，这需要在androidmanifest.xml文件中添加android:sharedUserId=”android.uid.system”，使得apk有system权限。
+
+LOCAL_PRIVILEGED_MODULE := true
+app应用在目录/system/priv-app/下
+
+LOCAL_PRIVILEGED_MODULE := false
+app应用在目录/system/app/下
 
 
 
@@ -822,57 +869,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ```
 
 
-
-
-***
-
-# LOCAL_PREBUILT_JNI_LIBS-复制内置apk中的so文件
-
-```makefile
-LOCAL_PREBUILT_JNI_LIBS:= \
-         @lib/armeabi/libnativeU.so
-```
-
-```makefile
-LOCAL_PREBUILT_JNI_LIBS := \
-    @lib/$(my_src_abi)/libbitmap_parcel.so \
-    @lib/$(my_src_abi)/librectifier.so \
-    @lib/$(my_src_abi)/libwebp_android.so
-```
-
-
-***
-
-# LOCAL_OVERRIDES_PACKAGES-替换app
-
-用当前app替换Gallery2
-
-```makefile
-LOCAL_OVERRIDES_PACKAGES := Gallery2
-```
-
-***
-
-# LOCAL_CERTIFICATE-platform签名
-
-
-```makefile
-LOCAL_PACKAGE_NAME := Settings
-LOCAL_CERTIFICATE := platform
-LOCAL_PRIVILEGED_MODULE := true
-```
-
-LOCAL_PACKAGE_NAME := Settings
-app应用的名称
-
-LOCAL_CERTIFICATE := platform
-代表使用platform来签名，这样的话这个apk就拥有了和system相同的签名，这需要在androidmanifest.xml文件中添加android:sharedUserId=”android.uid.system”，使得apk有system权限。
-
-LOCAL_PRIVILEGED_MODULE := true
-app应用在目录/system/priv-app/下
-
-LOCAL_PRIVILEGED_MODULE := false
-app应用在目录/system/app/下
 
 ***
 
