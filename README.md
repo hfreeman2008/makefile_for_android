@@ -1530,6 +1530,30 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 
 ***
 
+# ANDROID_BUILD_TOP
+
+这表示代码的android目录所在的路径:
+
+示例1:
+```makefile
+DIR=$ANDROID_BUILD_TOP/external/libphonenumber
+```
+
+示例2:
+```makefile
+if [ -z "$ANDROID_BUILD_TOP" ]; then
+    echo "Missing environment variables. Did you run build/envsetup.sh and lunch?" 1>&2
+    exit 1
+fi
+```
+
+示例3:
+```makefile
+source ${ANDROID_BUILD_TOP}/build/envsetup.sh
+```
+
+***
+
 ```makefile
 
 ```
