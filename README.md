@@ -244,6 +244,18 @@ export EX_VAR += value
 
 注意：是同一个进程下的make才有用。当多级遍历make时是无法全局的。
 
+***
+
+## PRODUCT_PROPERTY_OVERRIDES–系统属性值的覆盖
+
+```makefile
+PRODUCT_PROPERTY_OVERRIDES += \
+       dalvik.vm.heapgrowthlimit=128m \
+       dalvik.vm.heapminfree=6m \
+       dalvik.vm.heapstartsize=14m
+```
+
+
 
 ***
 
@@ -826,17 +838,6 @@ $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
 include $(LOCAL_PATH)/models/Android.mk
 #Config product info
 -include device/eastaeon/$(MTK_TARGET_PROJECT)/configs/*.mk
-```
-
-***
-
-# PRODUCT_PROPERTY_OVERRIDES–系统属性值的覆盖
-
-```makefile
-PRODUCT_PROPERTY_OVERRIDES += \
-       dalvik.vm.heapgrowthlimit=128m \
-       dalvik.vm.heapminfree=6m \
-       dalvik.vm.heapstartsize=14m
 ```
 
 
