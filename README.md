@@ -228,6 +228,21 @@ test.mk:4: -----var:aaa bbb ccc ddd
 
 ***
 
+## export-传参
+
+同一个进程
+
+```makefile
+export EX_VAR = value
+export EX_VAR := value
+export EX_VAR += value
+```
+
+
+注意：是同一个进程下的make才有用。当多级遍历make时是无法全局的。
+
+***
+
 # 判断 ifeq ifneq
 
 ifeq 比较参数“arg1”和“arg2”的值是否相同，如果相同则为真。
@@ -1594,20 +1609,9 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 ```
 
 
-***
-
-# export-传参
-
-同一个进程
-
-```makefile
-export EX_VAR = value
-export EX_VAR := value
-export EX_VAR += value
-```
 
 
-注意：是同一个进程下的make才有用。当多级遍历make时是无法全局的。
+
 
 ***
 
