@@ -1654,6 +1654,11 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 
 # linux命令
 
+
+https://www.runoob.com/linux/linux-command-manual.html
+
+Linux 命令大全
+
 ## nautilus
 
 
@@ -1731,6 +1736,15 @@ android开发笔记之mk文件
 2.https://blog.csdn.net/hfreeman2008/article/details/71418693
 
 android开发笔记之Makefile（一）
+
+
+3.https://www.runoob.com/linux/linux-shell.html
+
+Shell 教程
+
+4.https://www.runoob.com/linux/linux-command-manual.html
+
+Linux 命令大全
 
 ***
 
