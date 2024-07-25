@@ -1648,6 +1648,28 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 
 ## nautilus
 
+
+```makefile
+nautilus --help
+用法：
+  org.gnome.Nautilus [选项…] [URI…]
+
+帮助选项：
+  -h, --help                 显示帮助选项
+  --help-all                 显示全部帮助选项
+  --help-gapplication        显示 GApplication 选项
+  --help-gtk                 显示 GTK+ 选项
+
+应用程序选项：
+  -c, --check                执行一组快速自检测试。
+  --version                  显示程序的版本。
+  -w, --new-window           在浏览指定的 URI 时总是打开新窗口
+  -q, --quit                 退出 “文件”。
+  -s, --select               在上级文件夹中选择指定的 URI。
+  --display=显示             要使用的 X 显示
+```
+
+
 打开本地文件夹：
 
 ```makefile
