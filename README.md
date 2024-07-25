@@ -1642,6 +1642,19 @@ GetRandomValue(btinit->bt_nvram.fields.addr);
 #endif
 ```
 
+***
+
+# linux命令
+
+## nautilus
+
+打开本地文件夹：
+
+```makefile
+nautilus ./
+#endif
+```
+
 
 ***
 
