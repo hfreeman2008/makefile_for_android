@@ -811,7 +811,15 @@ CLEAR_VARS 变量由Build System提供。并指向一个指定的GNU Makefile，
 
 这个清理动作是必须的，因为所有的编译控制文件由同一个GNU Make解析和执行，其变量是全局的。所以清理后才能避免相互影响。
 
+***
 
+## LOCAL_INIT_RC
+
+```makefile
+LOCAL_INIT_RC := init.dreamiptablesd.rc
+```
+
+会将init.dreamiptablesd.rc编译到out/target/product/qssi/system/etc/init/init.dreamiptablesd.rc，这样就不需要到device\qcom\bengal\init.target.rc 中手动添加了，将rc文件分离开来。
 
 
 
