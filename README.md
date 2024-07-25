@@ -1681,6 +1681,20 @@ nautilus ./
 ***
 
 
+## date
+
+```makefile
+date
+2024年 07月 25日 星期四 20:03:47 CST
+```
+
+
+
+
+
+***
+
+
 # 常用make命令
 
 ```makefile
