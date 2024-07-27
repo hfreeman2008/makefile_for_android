@@ -358,6 +358,8 @@ unset variable_name
 
 # 数组
 
+## 数组定义
+
  数组用括号来表示，元素用"空格"符号分割开，语法格式如下：
 ```makefile
 array_name=(value1 value2 ... valuen)
@@ -383,6 +385,32 @@ echo "第四个元素为: ${my_array[3]}"
 第二个元素为: B
 第三个元素为: C
 第四个元素为: D
+```
+
+***
+
+## 
+
+
+***
+
+## 获取数组的长度
+
+```makefile
+#!/bin/bash
+my_array[0]=A
+my_array[1]=B
+my_array[2]=C
+my_array[3]=D
+echo "数组元素个数为: ${#my_array[*]}"
+echo "数组元素个数为: ${#my_array[@]}"
+```
+
+```makefile
+$ chmod +x test.sh 
+$ ./test.sh
+数组元素个数为: 4
+数组元素个数为: 4
 ```
 
 
