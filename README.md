@@ -1761,6 +1761,9 @@ Shell 教程
 
 Linux 命令大全
 
+5.https://www.jyshare.com/compile/18/
+bash在线工具
+
 ***
 
 [<font face='黑体' color=#ff0000 size=40 >跳转到文章开始</font>](#makefile_for_android)
