@@ -295,6 +295,18 @@ script.sh: line 4: myUrl: readonly variable
 ***
 
 
+## unset-删除变量
+
+变量被删除后不能再次使用。unset 命令不能删除只读变量。
+
+```makefile
+unset variable_name
+```
+
+
+***
+
+
 # ifeq ifneq-判断
 
 ifeq 比较参数“arg1”和“arg2”的值是否相同，如果相同则为真。
