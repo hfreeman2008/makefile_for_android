@@ -389,8 +389,88 @@ echo "第四个元素为: ${my_array[3]}"
 
 ***
 
-## 
+## 关联数组
 
+关联数组使用 declare 命令来声明，语法格式如下：
+
+```makefile
+declare -A array_name
+```
+
+-A 选项就是用于声明一个关联数组。
+
+关联数组的键是唯一的。
+
+
+以下实例我们创建一个关联数组 site，并创建不同的键值：
+```makefile
+declare -A site=(["google"]="www.google.com" ["runoob"]="www.runoob.com" ["taobao"]="www.taobao.com")
+```
+
+们也可以先声明一个关联数组，然后再设置键和值：
+```makefile
+declare -A site
+site["google"]="www.google.com"
+site["runoob"]="www.runoob.com"
+site["taobao"]="www.taobao.com"
+```
+
+访问关联数组元素可以使用指定的键，格式如下：
+```makefile
+array_name["index"]
+```
+
+过键来访问关联数组的元素：
+```makefile
+declare -A site
+site["google"]="www.google.com"
+site["runoob"]="www.runoob.com"
+site["taobao"]="www.taobao.com"
+
+echo ${site["runoob"]}
+```
+
+输出：
+```makefile
+www.runoob.com
+```
+
+获取数组中的所有元素
+
+使用 @ 或 * 可以获取数组中的所有元素
+```makefile
+#!/bin/bash
+my_array[0]=A
+my_array[1]=B
+my_array[2]=C
+my_array[3]=D
+echo "数组的元素为: ${my_array[*]}"
+echo "数组的元素为: ${my_array[@]}"
+```
+输出：
+
+```makefile
+$ chmod +x test.sh 
+$ ./test.sh
+数组的元素为: A B C D
+数组的元素为: A B C D
+```
+
+在数组前加一个感叹号 ! 可以获取数组的所有键
+```makefile
+declare -A site
+site["google"]="www.google.com"
+site["runoob"]="www.runoob.com"
+site["taobao"]="www.taobao.com"
+echo "数组的键为: ${!site[*]}"
+echo "数组的键为: ${!site[@]}"
+```
+
+输出：
+```makefile
+数组的键为: google runoob taobao
+数组的键为: google runoob taobao
+```
 
 ***
 
