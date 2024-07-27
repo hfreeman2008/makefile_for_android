@@ -277,6 +277,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 
+## readonly-只读变量
+
+```makefile
+#!/bin/bash
+myUrl="https://www.google.com"
+readonly myUrl
+myUrl="https://www.runoob.com"
+```
+
+输出报错：
+
+```makefile
+script.sh: line 4: myUrl: readonly variable
+```
+
 ***
 
 
