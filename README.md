@@ -354,6 +354,37 @@ script.sh: line 4: myUrl: readonly variable
 unset variable_name
 ```
 
+***
+
+# 数组
+
+ 数组用括号来表示，元素用"空格"符号分割开，语法格式如下：
+```makefile
+array_name=(value1 value2 ... valuen)
+```
+
+读取数组:
+```makefile
+${array_name[index]}
+```
+
+```makefile
+#!/bin/bash
+my_array=(A B "C" D)
+echo "第一个元素为: ${my_array[0]}"
+echo "第二个元素为: ${my_array[1]}"
+echo "第三个元素为: ${my_array[2]}"
+echo "第四个元素为: ${my_array[3]}"
+```
+
+输出：
+```makefile
+第一个元素为: A
+第二个元素为: B
+第三个元素为: C
+第四个元素为: D
+```
+
 
 ***
 
