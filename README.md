@@ -706,6 +706,46 @@ fi
 
 ***
 
+
+## 逻辑运算符
+
+假定变量 a 为 10，变量 b 为 20:
+
+|运算符|说明|举例|
+|-|-|-|
+| && | 逻辑的 AND |  [[ $a -lt 100 && $b -gt 100 ]] 返回 false |
+| -o  | 或运算，有一个表达式为 true 则返回 true。 | [ $a -lt 20 -o $b -gt 100 ] 返回 true。  |
+| ||| 逻辑的 OR | [[ $a -lt 100 || $b -gt 100 ]] 返回 true |
+
+```makefile
+#!/bin/bash
+
+a=10
+b=20
+
+if [[ $a -lt 100 && $b -gt 100 ]]
+then
+   echo "返回 true"
+else
+   echo "返回 false"
+fi
+
+if [[ $a -lt 100 || $b -gt 100 ]]
+then
+   echo "返回 true"
+else
+   echo "返回 false"
+fi
+```
+
+输出：
+```makefile
+返回 false
+返回 true
+```
+
+***
+
 ## 字符串运算符
 
 
