@@ -14,8 +14,9 @@ Z:
 ::cd Z:\hexiaoming\sc580_R2.0_Pat\out\target\product\qssi
 ::cd Z:\hexiaoming\sc580_glby\out\target\product\qssi
 
-::cd Z:\hexiaoming\orig_codebase_sc780\out\target\product\qssi
-cd Z:\hexiaoming\orig_codebase_sc780\out\target\product\bengal
+cd Z:\hexiaoming\orig_codebase_sc780\out\target\product\qssi
+::cd Z:\hexiaoming\orig_codebase_sc780\out\target\product\bengal
+
 
 
 ::adb root
@@ -423,6 +424,8 @@ adb push system\app\%apkName% /system/app/
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+
 ::mmm system/core/healthd/ -j64
 ::healthd
 ::set apkName=healthd
@@ -436,17 +439,15 @@ adb push system\bin\healthd /system/bin/
 ::DreamSettings
 ::set apkName=DreamSettings
 if "%apkName%"=="DreamSettings" (
-::adb push system_ext\priv-app\%apkName%  /system_ext/priv-app/
-call:push_path  system_ext\priv-app\%apkName%  /system_ext/priv-app/
+adb push system_ext\priv-app\%apkName%  /system_ext/priv-app/
 )
 
 
 ::make AutoSdkControl  -j64
 ::AutoSdkControl
-::set apkName=AutoSdkControl
+set apkName=AutoSdkControl
 if "%apkName%"=="AutoSdkControl" (
-::adb push system\app\%apkName% /system/app/
-call:push_path  system\app\%apkName%  /system/app/
+adb push system\app\%apkName% /system/app/
 )
 
 
@@ -454,8 +455,7 @@ call:push_path  system\app\%apkName%  /system/app/
 ::DreamRecorder
 ::set apkName=DreamRecorder
 if "%apkName%"=="DreamRecorder" (
-::adb push system\app\%apkName% /system/app/
-call:push_path  system\app\%apkName%  /system/app/
+adb push system\app\%apkName% /system/app/
 )
 
 
@@ -465,7 +465,7 @@ call:push_path  system\app\%apkName%  /system/app/
 
 ::framework services
 ::adb push system\framework /system/framework
-::adb push system\framework /system/
+adb push system\framework /system/
 ::call:push_path system\framework /system/
 
 
@@ -473,77 +473,14 @@ call:push_path  system\app\%apkName%  /system/app/
 ::mmma system/sepolicy
 ::out\target\product\bengal
 ::sepolicy
-set apkName=sepolicy
+::set apkName=sepolicy
 if "%apkName%"=="sepolicy" (
 adb push vendor\etc\selinux  /vendor/etc/
 adb push system\etc\selinux  /system/etc/
-::adb push root\sepolicy  /root/
 )
 
-pause
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::call:reboot:::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-call:reboot
-pause
-
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::call:power_shutdown:::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-::call:power_shutdown
-::pause
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::reboot::::::::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:reboot
-::if errorlevel 0 adb reboot
-adb reboot
-goto:eof
-
-
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::power_shutdown::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:power_shutdown
 ::if errorlevel 0 adb shell svc power shutdown
-adb shell svc power shutdown
-goto:eof
+if errorlevel 0 adb reboot
 
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::function defined start::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::call:push_path_system_app DreamDevicePolicyServer
-::call:push_path_system_priv_app DreamDevicePolicyServer
-::call:push_path system\app\DreamDevicePolicyServer  system\app\
-
-:push_path
-::echo push_path First para:%1
-::echo push_path Second para:%2
-adb push %1 %2
-goto:eof
-
-
-
-:push_path_system_app
-::echo push_path_system_app First:%1
-set apk_name_temp=%1
-::echo push_path_system_app %apk_name_temp%
-adb push  system\app\%apk_name_temp% /system/app/
-goto:eof
-
-
-:push_path_system_priv_app
-::echo push_path_system_priv_app First:%1
-set apk_name_temp=%1
-adb push  system\priv-app\%apk_name_temp% /system/priv-app/
-goto:eof
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::function defined end::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
+pause
