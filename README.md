@@ -1468,7 +1468,6 @@ string
 
 ```
 
-
 ***
 
 ## foreach-循环函数
@@ -1496,6 +1495,67 @@ test.mk:4: -----file:a.java b.java c.java d.java
 ```
 
 ***
+
+
+## while-循环
+
+while 循环用于不断执行一系列命令，也用于从输入文件中读取数据。其语法格式为：
+```makefile
+while condition
+do
+    command
+done
+
+```
+
+示例1：
+```makefile
+#!/bin/bash
+int=1
+while(( $int<=5 ))
+do
+    echo $int
+    let "int++"
+done
+```
+
+输出：
+```makefile
+1
+2
+3
+4
+5
+```
+
+无限循环语法格式：
+```makefile
+while :
+do
+    command
+done
+
+```
+
+或者
+```makefile
+while true
+do
+    command
+done
+```
+
+或者
+```makefile
+for (( ; ; ))
+
+```
+
+
+
+***
+
+
 
 # 传递参数
 
