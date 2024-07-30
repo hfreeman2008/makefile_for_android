@@ -2080,6 +2080,8 @@ LOCAL_INIT_RC := init.dreamiptablesd.rc
 
 # 函数
 
+## 自定义函数
+
 用户定义函数，然后在shell脚本中可以随便调用。
 
 shell中函数的定义格式如下：
