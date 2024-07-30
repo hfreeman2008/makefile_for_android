@@ -1162,7 +1162,90 @@ fi
 
 # 流程控制
 
-## if
+## if-判断
+
+if 语句语法格式：
+```makefile
+if condition
+then
+    command1 
+    command2
+    ...
+    commandN 
+fi
+```
+写成一行（适用于终端命令提示符）：
+
+```makefile
+if [ $(ps -ef | grep -c "ssh") -gt 1 ]; then echo "true"; fi
+```
+
+if else 语法格式：
+
+```makefile
+if condition
+then
+    command1 
+    command2
+    ...
+    commandN
+else
+    command
+fi
+```
+
+if else-if else 语法格式：
+```makefile
+if condition1
+then
+    command1
+elif condition2 
+then 
+    command2
+else
+    commandN
+fi
+```
+
+
+样例一：
+```makefile
+a=10
+b=20
+if [ $a == $b ]
+then
+   echo "a 等于 b"
+elif [ $a -gt $b ]
+then
+   echo "a 大于 b"
+elif [ $a -lt $b ]
+then
+   echo "a 小于 b"
+else
+   echo "没有符合的条件"
+fi
+```
+
+样例二：
+```makefile
+a=10
+b=20
+if (( $a == $b ))
+then
+   echo "a 等于 b"
+elif (( $a > $b ))
+then
+   echo "a 大于 b"
+elif (( $a < $b ))
+then
+   echo "a 小于 b"
+else
+   echo "没有符合的条件"
+fi
+```
+
+***
+
 
 
 ## ifeq ifneq-判断
