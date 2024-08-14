@@ -3007,6 +3007,14 @@ $(shell  cp -f  device/mediatek/common/fmradio/tda7729xycfg_open.h   kernel-3.18
 ```
 
 
+sh文件执行sh脚本：
+```makefile
+overlay_codes_copy_file.sh $src_file $dest
+或
+. overlay_codes_copy_file.sh $src_file $dest
+```
+
+
 ***
 
 
