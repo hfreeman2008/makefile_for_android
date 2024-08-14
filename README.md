@@ -558,6 +558,19 @@ unset variable_name
 
 ***
 
+## local-本地变量
+
+在方法函数中定义一个本地变量
+
+```makefile
+function copy() {
+    local src=$1
+    local des=$2
+}
+```
+
+***
+
 # 数组
 
 ## 数组定义
