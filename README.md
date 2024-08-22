@@ -3261,6 +3261,19 @@ $ command > /dev/null 2>&1
 
 ***
 
+# 等待时间
+
+
+## ping 实现等待5秒的效果
+
+```makefile
+ping -c 5 -W 5 127.0.0.1 >/dev/null
+```
+
+
+***
+
+
 # linux命令
 
 
